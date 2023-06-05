@@ -1,0 +1,105 @@
+Activitynet : 
+  cmin : /data/projects/VT_localization/jinyeong/TSGV/results/cmin/Activitynet/2023_03_28T00_26_50/cmin_Activitynet_output.pickle
+  csmgan : /data/projects/VT_localization/jinyeong/TSGV/results/csmgan/Activitynet/2023_04_02T18_38_59/csmgan_Activitynet_output.pickle
+  ianet : /data/projects/VT_localization/jinyeong/TSGV/results/ianet/Activitynet/2023_03_28T18_03_13/ianet_Activitynet_output.pickle
+  tdtan :
+  ranet :
+  mgpn :
+  drn : 
+  lgi : 
+  plrn : 
+  vslnet :
+  tmlga :
+  reloclnet : 
+  cnm : 
+
+Charades : 
+  cmin : 
+  csmgan :
+  ianet : 
+  tdtan :
+  ranet :
+  mgpn :
+  drn : 
+  lgi : 
+  plrn : 
+  vslnet :
+  tmlga :
+  reloclnet : 
+  cnm : 
+
+Tacos : 
+  cmin : 
+  csmgan :
+  ianet : 
+  tdtan :
+  ranet :
+  mgpn :
+  drn : 
+  lgi : 
+  plrn : 
+  vslnet :
+  tmlga :
+  reloclnet : 
+  cnm :  
+
+Didemo : 
+  cmin : 
+  csmgan :
+  ianet : 
+  tdtan :
+  ranet :
+  mgpn :
+  drn : 
+  lgi : 
+  plrn : 
+  vslnet :
+  tmlga :
+  reloclnet : 
+  cnm : 
+
+Youcook2 : 
+  cmin : 
+  csmgan :
+  ianet : 
+  tdtan :
+  ranet :
+  mgpn :
+  drn : 
+  lgi : 
+  plrn : 
+  vslnet :
+  tmlga :
+  reloclnet : 
+  cnm : 
+
+Msrvtt : 
+  cmin : 
+  csmgan :
+  ianet : 
+  tdtan :
+  ranet :
+  mgpn :
+  drn : 
+  lgi : 
+  plrn : 
+  vslnet :
+  tmlga :
+  reloclnet : 
+  cnm : 
+
+Tvr : 
+  cmin : 
+  csmgan :
+  ianet : 
+  tdtan :
+  ranet :
+  mgpn :
+  drn : 
+  lgi : 
+  plrn : 
+  vslnet :
+  tmlga :
+  reloclnet : 
+  cnm : 
+

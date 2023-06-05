@@ -1,0 +1,96 @@
+max_num_words : 20
+max_num_nodes : 20
+max_num_frames : 256 # for charades, 64
+d_model : 512
+num_heads : 4
+batch_size : 32
+dropout : 0.2
+word_dim : 300
+frame_dim : 500
+num_gcn_layers : 2
+num_attn_layers : 2
+iou : [0.1, 0.3, 0.5, 0.7]
+is_adj : False
+
+WORKERS: 4
+
+MODEL_DIR: ./checkpoints
+RESULT_DIR: ./results
+LOG_DIR: ./log
+DATA_DIR: ./data/Charades-STA
+
+DATASET:
+  NAME: Charadesi3d
+  VIS_INPUT_TYPE: I3D
+  NO_VAL: True
+  NUM_SAMPLE_CLIPS: 256
+  TARGET_STRIDE: 16
+  NORMALIZE: True
+  RANDOM_SAMPLING: False
+
+CUDNN:
+  DETERMINISTIC: False
+  BENCHMARK: True
+
+TRAIN:
+  BATCH_SIZE: 32
+  LR: 0.0001
+  WEIGHT_DECAY: 0.0000
+  MAX_EPOCH: 100
+  CONTINUE: False
+
+LOSS:
+  NAME: bce_rescale_loss
+  PARAMS:
+    MIN_IOU: 0.5
+    MAX_IOU: 1.0
+    BIAS: 0.0
+
+TEST:
+  BATCH_SIZE: 32
+  RECALL: 1,5
+  TIOU: 0.1,0.3,0.5,0.7
+  EVAL_TRAIN: True
+  NMS_THRESH: 0.5
+
+TAN:
+
+  FRAME_MODULE:
+    NAME: FrameAvgPool
+    PARAMS:
+      INPUT_SIZE: 1024
+      HIDDEN_SIZE: 512
+      KERNEL_SIZE: 16
+      STRIDE: 16
+
+  PROP_MODULE:
+    NAME: SparsePropConv
+    PARAMS:
+      HIDDEN_SIZE: 512
+      NUM_SCALE_LAYERS: [16]
+
+  FUSION_MODULE:
+    NAME: BaseFusion
+    PARAMS:
+      HIDDEN_SIZE: 512
+      TXT_INPUT_SIZE: 300
+      TXT_HIDDEN_SIZE: 512
+      LSTM:
+        NUM_LAYERS: 3
+        BIDIRECTIONAL: False
+
+  MAP_MODULE:
+    NAME: MapConv
+    PARAMS:
+      INPUT_SIZE: 512
+      HIDDEN_SIZES: [512, 512, 512, 512, 512, 512, 512, 512]
+      KERNEL_SIZES: [5, 5, 5, 5, 5, 5, 5, 5]
+      STRIDES: [1, 1, 1, 1, 1, 1, 1, 1]
+      PADDINGS: [16, 0, 0, 0, 0, 0, 0, 0]
+      DILATIONS: [1, 1, 1, 1, 1, 1, 1, 1]
+
+  PRED_INPUT_SIZE: 512
+
+MODEL:
+  NAME: TAN
+  CHECKPOINT: ./checkpoints/Charadesi3d/TAN_I3D/iter005418-0.4586-0.7909.pkl

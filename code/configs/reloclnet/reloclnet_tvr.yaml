@@ -1,0 +1,63 @@
+# activity, tacos
+max_num_words : 30
+max_num_nodes : 20
+max_num_frames : 128 # 64 for charades, 128 for Tvr
+d_model : 512
+num_heads : 8 # 8 for Tvr else 4
+batch_size : 64
+dropout : 0.2
+word_dim : 768 # 768+2
+frame_dim : 3072 # 3072+2
+num_gcn_layers : 2 
+num_attn_layers : 2
+iou : [0.1, 0.3, 0.5, 0.7]
+is_adj : False
+
+# ========================= Model Config ===================================
+
+# visual_input_size : 3072# vid_feat_size, -> frame_dim 
+# query_input_size : 768 # q_feat_size, -> word_dim
+# sub_input_size : 768 # sub_feat_size, -> word_dim
+hidden_size : 384
+conv_kernel_size : 5
+conv_stride : 1
+# max_ctx_l : 128 # -> max_num_frames
+max_desc_l : 30
+input_drop : 0.1 
+drop : 0.1 # hidden_dropout_prob
+# n_heads : 8 # -> num_heads
+initializer_range : 0.02
+ctx_mode : 'video_sub_tef'
+
+
+# ================================ inference ================================
+clip_length : 1.5 # 2.5 for did, 1.5 for tvr, 5 for act, 3 for char
+min_pred_l : 2
+max_pred_l : 16
+max_before_nms : 200
+top_n : 100
+
+# ============================== training ====================================
+lr_warmup_proportion : 0.01
+margin : 0.1
+ranking_loss_type : "hinge" # ["hinge", "lse"]
+lw_neg_q : 1
+lw_neg_ctx : 1
+lw_fcl : 0.03
+lw_vcl : 0.03
+lw_st_ed : 0.01 
+
+max_es_cnt :  10 # early_stop_epoch
+ranking_loss_type : "hinge"
+train_span_start_epoch : 0
+use_hard_negative : False
+hard_negative_start_epoch : 20
+hard_pool_size : 20
+
+max_sub_l : 50
+no_norm_vfeat : true
+no_norm_tfeat : false
+
+max_position_embeddings : 300
+max_vcmr_video : 100
+nms_thd : -1.0
