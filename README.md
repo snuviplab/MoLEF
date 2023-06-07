@@ -21,22 +21,22 @@
 <br />
 <div align="center">
   <a href="https://github.com/jiny419/MoLEF">
-    <img src="imgs/logo.png" alt="Logo" width="90" height="90">
+    <img src="imgs/logo.png" alt="Logo" width="110" height="110">
   </a>
 
-  <h3 align="center">MoLEF</h3>
+  <h2 align="center">MoLEF</h2>
 
   <p align="center">
     Moment Localization Evaluation Framework
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jiny419/MoLEF"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/jiny419/MoLEF">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/jiny419/MoLEF/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/jiny419/MoLEF/issues">Request Feature</a>
   </p>
 </div>
 
