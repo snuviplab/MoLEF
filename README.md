@@ -1,4 +1,3 @@
-v id="top"></div>
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -22,30 +21,27 @@ v id="top"></div>
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/jiny419/MoLEF">
-    <img src="imgs/framework.pdf" alt="Logo" width="80" height="80">
+    <img src="imgs/logo.png" alt="Logo" width="110" height="110">
   </a>
 
-  <h3 align="center">MoLEF</h3>
+  <h2 align="center">MoLEF</h2>
 
   <p align="center">
     Moment Localization Evaluation Framework
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jiny419/MoLEF"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/jiny419/MoLEF">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/jiny419/MoLEF/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/jiny419/MoLEF/issues">Request Feature</a>
   </p>
 </div>
 
@@ -78,14 +74,14 @@ v id="top"></div>
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 MoLEF is a moment localization evaluation framework for video and text multimodal research. MoLEF contains reference implementations of state-of-the-art video and language models. See full list of project inside or built on MoLEF.
 
 MoLEF is powered by PyTorch, allows distributed parallel training and flexible experiments by embedding custom datasets and models. 
 
 MoLEF also acts starter codebase for challenges around video and text datasets (ActivityNet-captions, Charades-STA, DiDeMo, TACoS, YouCook2, MSR-VTT, TVR). 
 
+The below image is illustrated our framework, MoLEF.
+<img src="imgs/framework.png">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -150,7 +146,7 @@ python main.py  --model model_name --mode evaluation --word2vec-path  data/glove
 <!-- CONTACT -->
 ## Contact
 
-Jinyeong Chae - jiny419@dgu.ac.kr
+Jinyeong Chae - jiny491@gmail.com
 
 Project Link: [https://github.com/jiny419/MoLEF](https://github.com/jiny419/MoLEF)
 
@@ -171,16 +167,13 @@ Use this space to list resources you find helpful and would like to give credit 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png# MoLEF
+[contributors-shield]: https://img.shields.io/github/contributors/jiny419/MoLEF.svg?style=for-the-badge
+[contributors-url]: https://github.com/jiny419/MoLEF/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/jiny419/MoLEF.svg?style=for-the-badge
+[forks-url]: https://github.com/jiny419/MoLEF/network/members
+[stars-shield]: https://img.shields.io/github/stars/jiny419/MoLEF.svg?style=for-the-badge
+[stars-url]: https://github.com/jiny419/MoLEF/stargazers
+[issues-shield]: https://img.shields.io/github/issues/jiny419/MoLEF.svg?style=for-the-badge
+[issues-url]: https://github.com/jiny419/MoLEF/issues
+[license-shield]: https://img.shields.io/github/license/jiny419/MoLEF.svg?style=for-the-badge
+[license-url]: https://github.com/jiny419/MoLEF/blob/master/LICENSE.txt
