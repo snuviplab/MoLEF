@@ -21,7 +21,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jiny419/MoLEF">
-    <img src="imgs/logo.png" alt="Logo" width="80" height="80">
+    <img src="imgs/logo.png" alt="Logo" width="90" height="90">
   </a>
 
   <h3 align="center">MoLEF</h3>
@@ -68,8 +68,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 MoLEF is a moment localization evaluation framework for video and text multimodal research. MoLEF contains reference implementations of state-of-the-art video and language models. See full list of project inside or built on MoLEF.
 
