@@ -1,0 +1,41 @@
+# activity, tacos, charades, didemo
+max_num_words : 20
+max_num_nodes : 20
+max_num_frames : 200 # 64 for charades else 200
+d_model : 512
+num_heads : 4
+batch_size : 64 
+dropout : 0.2
+word_dim : 300 # 768 for tvr else 300
+frame_dim : 512 # 500 for act, 1024 for char, 4096 for did/msr/tac, 3072 for tvr, 512 for you 
+num_gcn_layers : 2
+num_attn_layers : 2
+is_adj : False
+
+# ======================================= Traning configs ==================================
+is_first_stage : false 
+is_second_stage : false
+is_third_stage : false
+
+model_load_path : '/home/donghwa/data/projects/VT_localization/donghwa/TSGV/results/drn/Youcook2/first_stage/model-9' 
+
+# ======================================= Evaluate configs ==================================
+iou : [0.1, 0.3, 0.5, 0.7]
+topk: [1]
+# ======================================= Learning configs ==================================
+lstm_layers: 1
+# ======================================= Backbone configs ==================================
+first_output_dim: 256
+# ======================================= FPN configs ==================================
+fpn_feature_dim: 512
+fpn_stride: [1, 2, 4]
+# ======================================= FCOS configs ==================================
+fcos_conv_layers: 1
+fcos_prior_prob: 0.01
+fcos_loss_alpha: 0.25
+fcos_loss_gamma: 2.0
+fcos_inference_thr: 0.05
+fcos_pre_nms_top_n: 32
+fcos_nms_thr: 0.6
+fcos_num_class: 2
+test_detections_per_img: 32

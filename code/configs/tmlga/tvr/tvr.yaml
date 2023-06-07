@@ -1,0 +1,72 @@
+max_num_words : 20
+max_num_nodes : 20
+max_num_frames : 200 # for charades, 64
+d_model : 512
+num_heads : 4
+batch_size : 64
+dropout : 0.2
+# word_dim : 300
+word_dim : 768 # for tvr
+# frame_dim : 500
+frame_dim : 3072 # for tvr
+num_gcn_layers : 2
+num_attn_layers : 2
+is_adj : false # for ianet, csmgan
+
+# This experiment use DynamicFilter not MultiDynamicFilter
+ENGINE_STAGE: "TESTER"
+TEST:
+    MODEL: "./checkpoints/tvr/model_tvr"
+    
+SENTENCE:
+    MIN_COUNT: 1
+    TRAIN_MAX_LENGTH: 30
+    TEST_MAX_LENGTH: 30
+
+DYNAMIC_FILTER:
+    MODEL: "LSTM"
+    POOLING: "MeanPoolingLayer"
+    HEAD_MODEL: "MLP"
+    LSTM:
+        NUM_LAYERS: 1
+        HIDDEN_SIZE: 256
+        BIAS: False
+        BIDIRECTIONAL: True
+        BATCH_FIRST: True
+        DROPOUT: 0.
+    MLP:
+        INPUT_DIM : 512
+        OUTPUT_DIM: 512
+
+
+REDUCTION:
+    INPUT_SIZE: 1024
+    OUTPUT_SIZE: 512
+
+LOCALIZATION:
+    INPUT_SIZE: 512
+    HIDDEN_SIZE: 256
+    NUM_LAYERS: 2
+    BIAS: False
+    DROPOUT: 0.5
+    BIDIRECTIONAL: True
+    BATCH_FIRST: True
+
+CLASSIFICATION:
+    INPUT_SIZE: 512
+    OUTPUT_SIZE: 1
+
+DATASETS:
+    TRAIN: "tvr_train"
+    TEST:  "tvr_test"
+    TEST_SAMPLES: 10895.
+
+BATCH_SIZE_TRAIN: 128
+BATCH_SIZE_TEST: 2
+
+SOLVER:
+    TYPE: "ADAM"
+    BASE_LR: 0.0001
+    WEIGHT_DECAY: 0.01
+    EPSILON: 1E-8
+EPOCHS: 100
