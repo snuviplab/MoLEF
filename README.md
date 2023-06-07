@@ -1,4 +1,3 @@
-v id="top"></div>
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -17,20 +16,12 @@ v id="top"></div>
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/jiny419/MoLEF">
-    <img src="imgs/framework.pdf" alt="Logo" width="80" height="80">
+    <img src="imgs/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">MoLEF</h3>
@@ -86,6 +77,8 @@ MoLEF is powered by PyTorch, allows distributed parallel training and flexible e
 
 MoLEF also acts starter codebase for challenges around video and text datasets (ActivityNet-captions, Charades-STA, DiDeMo, TACoS, YouCook2, MSR-VTT, TVR). 
 
+The below image is illustrated our framework, MoLEF.
+<img src="imgs/framework.png">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -150,7 +143,7 @@ python main.py  --model model_name --mode evaluation --word2vec-path  data/glove
 <!-- CONTACT -->
 ## Contact
 
-Jinyeong Chae - jiny419@dgu.ac.kr
+Jinyeong Chae - jiny491@gmail.com
 
 Project Link: [https://github.com/jiny419/MoLEF](https://github.com/jiny419/MoLEF)
 
