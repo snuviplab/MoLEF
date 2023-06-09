@@ -157,9 +157,7 @@ Project Link: [https://github.com/jiny419/MoLEF](https://github.com/jiny419/MoLE
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
+This project is licenced under the MIT Licence - see the [LICENSE.md](LICENSE.md) file for details.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
