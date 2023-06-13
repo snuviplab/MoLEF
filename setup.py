@@ -20,9 +20,8 @@ def fetch_files_from_folder(folder):
 
 def fetch_package_data():
     current_dir = os.getcwd()
-    tsgv_folder = os.path.dirname(os.path.abspath(__file__))
-    # The files for package data need to be relative to mmf package dir
-    os.chdir(os.path.join(tsgv_folder, "code"))
+    molef_folder = os.path.dirname(os.path.abspath(__file__))
+    os.chdir(os.path.join(molef_folder, "code"))
     data_files = fetch_files_from_folder(".")
     os.chdir(current_dir)
     return data_files
@@ -33,17 +32,13 @@ if __name__ == "__main__":
         long_description = fh.read()
 
     setuptools.setup(
-        name="tsgv",
-        version="0.0.1",
+        name="MoLEF",
+        version="1.0.1",
         author="Jinyeong Chae",
-        author_email="author@example.com",
-        description="video_text_localization",
+        author_email="jiny491@gmail.com",
+        description="moment localization evaluation framework",
         long_description=long_description,
         long_description_content_type="text/markdown",
-        # url="https://github.com/pypa/sampleproject",
-        # project_urls={
-        #     "Bug Tracker": "https://github.com/pypa/sampleproject/issues",
-        # },
         classifiers=[
             "Programming Language :: Python :: 3",
             "Operating System :: OS Independent",
@@ -51,7 +46,7 @@ if __name__ == "__main__":
         package_dir={"": "code"},
         packages=setuptools.find_packages(where='code'),
         py_modules=[splitext(basename(path))[0] for path in glob('code/*.py')], 
-        # package_data={"tsgv": fetch_package_data()},
+        # package_data={"molef": fetch_package_data()},
         # packages=setuptools.find_packages(),
-        python_requires=">=3.6",
+        python_requires=">=3.8",
     )
