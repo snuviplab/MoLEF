@@ -89,14 +89,14 @@ The below image is illustrated our framework, MoLEF.
 
 ### Built With
 
-* [Python 3.8](https://nextjs.org/)
-* [PyTorch 1.10.0 with CUDA 11.3](https://reactjs.org/)
-* [torch-geometric 2.0.3](https://vuejs.org/)
-* [fairseq 0.10.2](https://angular.io/)
-* [gensim](https://svelte.dev/)
-* [nltkl](https://laravel.com)
-* [fcos](https://getbootstrap.com)
-* [tensorboardX](https://jquery.com)
+* [Python 3.8](https://www.python.org/downloads/release/python-380/)
+* [PyTorch 1.10.0 with CUDA 11.3](https://pytorch.org/get-started/previous-versions/)
+* [torch-geometric 2.0.3](https://pytorch-geometric.readthedocs.io/en/2.0.3/)
+* [fairseq 0.10.2](https://fairseq.readthedocs.io/en/v0.10.2/)
+* [gensim](https://pypi.org/project/gensim/)
+* [nltk](https://www.nltk.org/install.html)
+* [fcos](https://pypi.org/project/fcos/)
+* [tensorboardX](https://pypi.org/project/tensorboardX/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -111,10 +111,7 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites - Data
 
 See details in data/README.md.
-* Data
-  ```sh
-  ---
-  ```
+
 
 ### Installation
 
