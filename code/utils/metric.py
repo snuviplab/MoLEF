@@ -10,7 +10,7 @@ def calculate_IoU(i0, i1):
 
     if union[1] - union[0] < -1e-5:
         return 0
-    iou = 1.0 * (inter[1] - inter[0] + 1) / (union[1] - union[0] + 1)
+    iou = 1.0 * (inter[1] - inter[0] + 1e-10) / (union[1] - union[0] + 1e-10)
     return iou if iou >= 0.0 else 0.0
 
 '''
@@ -19,7 +19,7 @@ calculate temporal intersection over union
 def calculate_IoU_batch(i0, i1):
     union = (np.min(np.stack([i0[0], i1[0]], 0), 0), np.max(np.stack([i0[1], i1[1]], 0), 0))
     inter = (np.max(np.stack([i0[0], i1[0]], 0), 0), np.min(np.stack([i0[1], i1[1]], 0), 0))
-    iou = 1.0 * (inter[1] - inter[0] + 1) / (union[1] - union[0] + 1)
+    iou = 1.0 * (inter[1] - inter[0] + 1e-10) / (union[1] - union[0] + 1e-10)
     iou[union[1] - union[0] < -1e-5] = 0
     iou[iou < 0] = 0.0
     return iou
@@ -40,6 +40,9 @@ def nms_temporal(predict_score, predict_windows, overlap):
     starts = predict_windows[:,0]
     ends = predict_windows[:,1]
     scores = predict_score
+    # for models do not need nms (models without predict_score) return all index for predict_windows
+    if len(predict_score) == 0:
+        return list(range(len(predict_windows)))
     assert len(starts)==len(scores)
     if len(starts)==0:
         return pick
@@ -80,11 +83,11 @@ def compute_IoU_recall_top_n(predict_windows, gt_windows, picks, top_n, IoU_thre
 
     return correct
 
-def compute_IoU_recall(predict_score, predict_windows, gt_windows):
+def compute_IoU_recall(predict_score, predict_windows, gt_windows, _top_n_list = [1,5]):
 
     IoU_threshs = [0.1, 0.3, 0.5, 0.7]
-    top_n_list = [1,5]
-    topn_IoU_matric = np.zeros([len(top_n_list), 4],dtype=np.float32)
+    top_n_list = _top_n_list
+    topn_IoU_matric = np.zeros([2, 4],dtype=np.float32)
 
     for i, IoU_thresh in enumerate(IoU_threshs):
         picks = nms_temporal(predict_score, predict_windows, IoU_thresh-0.05)

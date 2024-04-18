@@ -1,17 +1,13 @@
 max_num_words : 20
 max_num_nodes : 20
 max_num_frames : 200 # for charades, 64
-d_model : 512
-num_heads : 4
 batch_size : 128
 dropout : 0.2
-# word_dim : 300
 word_dim : 768 # for tvr
-# frame_dim : 500
 frame_dim : 3072 # for tvr
-num_gcn_layers : 2
-num_attn_layers : 2
 is_adj : false # for ianet, csmgan
+with_max_IoU : False
+vocab_size : 9592
 
 ENGINE_STAGE: "TRAINER"
 SENTENCE:

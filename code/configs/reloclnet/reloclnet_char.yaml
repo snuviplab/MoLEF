@@ -2,16 +2,15 @@
 max_num_words : 64
 max_num_nodes : 20
 max_num_frames : 64 # 64 for charades, 128 for Tvr
-d_model : 512
 num_heads : 4 # 8 for Tvr else 4
 batch_size : 64
 dropout : 0.2
 word_dim : 300
 frame_dim : 1024 
-num_gcn_layers : 2 
-num_attn_layers : 2
 iou : [0.1, 0.3, 0.5, 0.7]
 is_adj : False
+with_max_IoU : False
+vocab_size : 1111
 
 # ========================= Model Config ===================================
 

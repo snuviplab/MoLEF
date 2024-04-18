@@ -1,8 +1,12 @@
 import os, sys
+os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
 import argparse
 import logging
 from optimizer.lr_scheduler import LR_SCHEDULER_REGISTRY
 from utils.utils import Timer
+from utils.config import CfgNode
 
 # Tensorboard configuration
 from datetime import date, datetime
@@ -58,7 +62,6 @@ def parse_args():
 
     args = parser.parse_args()
     if args.cfg is not None or args.set_cfgs is not None :
-        from utils.config import CfgNode
         if args.cfg is not None:
             cn = CfgNode(CfgNode.load_yaml_with_base(args.cfg))
         else:
@@ -66,11 +69,10 @@ def parse_args():
         if args.set_cfgs is not None:
             cn.merge_from_list(args.set_cfgs)
         for k,v in cn.items():
-            if not hasattr(args, k):
-                print('Warning: key %s not in args' %k)
+            # if not hasattr(args, k):
+            #     print('Warning: key %s not in args' %k)
             setattr(args, k, v)
         args = parser.parse_args(namespace=args)
-
 
     return args
 
@@ -92,8 +94,8 @@ def main(args, writer):
         runner.train() 
     elif args.mode == 'evaluation' :
         # runner.eval_new() # recall 1, 5, 10
-        # runner.eval(epoch=0)
-        runner.eval_save()
+        runner.eval(epoch=0)
+        # runner.eval_save()
 
 
 if __name__ == '__main__':
@@ -136,5 +138,10 @@ if __name__ == '__main__':
 
         cfg.merge_from_list(['EXPERIMENT_NAME', experiment_name, 'LOG_DIRECTORY', log_directory, "VISUALIZATION_DIRECTORY", vis_directory])
         cfg.merge_from_file(args.cfg)
+        
+    elif args.model == "mgpn" :
+        from modules.mgpn import model_config as config
+        config.update_config(args.cfg)
     
+    print(args)
     main(args, writer)

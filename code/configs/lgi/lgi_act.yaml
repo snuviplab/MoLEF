@@ -1,0 +1,125 @@
+# activity, tacos
+max_num_words : 20
+max_num_nodes : 20
+max_num_frames : 200 # 200 for charades, 64
+d_model : 512
+num_heads : 4
+batch_size : 64
+dropout : 0.2
+word_dim : 300
+frame_dim : 500
+num_gcn_layers : 2 
+num_attn_layers : 2
+iou : [0.1, 0.3, 0.5, 0.7]
+is_adj : False
+with_max_IoU : 0.3
+vocab_size : 8000 # act: 8000, char: 1111, did: 6250, msr: 11901, tac: 1352, tvr: 9592, you: 1493
+
+evaluation:
+  evaluate_after: -1
+  every_eval: 1
+  print_every: 100
+logging:
+  print_level: DEBUG
+  write_level: INFO
+misc:
+  dataset: anet
+  debug: false
+  exp_prefix: anet/tgn_lgi/LGI
+  method_type: tgn_lgi
+  num_workers: 4
+  print_every: 100
+  result_dir: results/anet/tgn_lgi/LGI
+  tensorboard_dir: tensorboard/anet/tgn_lgi/LGI
+  vis_every: 1
+model_config:
+  checkpoint_path: ''
+  dqa_lambda: 0.2
+  dqa_weight: 1.0
+  glove_path: ''
+  grounding_att_cand_dim: 512
+  grounding_att_drop_prob: 0.0
+  grounding_att_hdim: 256
+  grounding_att_key_dim: 512
+  grounding_hdim: 512
+  grounding_idim: 512
+  lgi_fusion_method: mul
+  lgi_global_nl_drop_prob: 0.0
+  lgi_global_nl_idim: 512
+  lgi_global_nl_nheads: 1
+  lgi_global_nl_odim: 512
+  lgi_global_nl_use_bias: true
+  lgi_global_nl_use_local_mask: false
+  lgi_global_num_nl_block: 1
+  lgi_global_satt_att_cand_dim: 512
+  lgi_global_satt_att_edim: -1
+  lgi_global_satt_att_hdim: 256
+  lgi_global_satt_att_n: 1
+  lgi_global_satt_att_use_embedding: false
+  lgi_global_type: nl
+  lgi_hp_hdim: 512
+  lgi_hp_idim_1: 512
+  lgi_hp_idim_2: 512
+  lgi_local_do_downsample: false
+  lgi_local_num_res_blocks: 1
+  lgi_local_res_block_1d_hdim: 256
+  lgi_local_res_block_1d_idim: 512
+  lgi_local_res_block_1d_ksize: 15
+  lgi_local_res_block_1d_odim: 512
+  lgi_local_type: res_block
+  loc_word_emb_vocab_size: 1140
+  model_type: LGI
+  num_semantic_entity: 5
+  query_enc_emb_idim: 1140
+  query_enc_emb_odim: 300
+  query_enc_rnn_bidirectional: true
+  query_enc_rnn_dropout: 0.5
+  query_enc_rnn_hdim: 256
+  query_enc_rnn_idim: 300
+  query_enc_rnn_nlayer: 2
+  query_enc_rnn_type: LSTM
+  resume: false
+  sqan_att_cand_dim: 512
+  sqan_att_drop_prob: 0.0
+  sqan_att_hdim: 256
+  sqan_att_key_dim: 512
+  sqan_qdim: 512
+  tag_weight: 1.0
+  use_distinct_query_attention_loss: true
+  use_gpu: true
+  use_temporal_attention_guidance_loss: false
+  use_video_encoder: false
+  video_enc_pemb_idim: 512
+  video_enc_pemb_odim: 512
+  video_enc_use_position: true
+  video_enc_vemb_idim: 500
+  video_enc_vemb_odim: 512
+optimize:
+  decay_factor: 0.5
+  decay_step: -1
+  init_lr: 0.0004
+  num_step: 300
+  optimizer_type: Adam
+  scheduler_type: ''
+test_loader:
+  batch_size: 100
+  data_dir: data/anet
+  dataset: anet
+  feature_type: I3D
+  in_memory: true
+  max_length: 25
+  num_segment: 128
+  split: test
+  video_feature_path: /data/projects/VT_localization/tsgv_data/data/activity/org/{}.npy
+  word_frequency_threshold: 1
+train_loader:
+  batch_size: 100
+  data_dir: data/anet
+  dataset: anet
+  feature_type: I3D
+  in_memory: true
+  max_length: 25
+  num_segment: 128
+  split: train
+  video_feature_path: /data/projects/VT_localization/tsgv_data/data/activity/org/{}.npy
+  word_frequency_threshold: 1

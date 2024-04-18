@@ -19,6 +19,8 @@ code/total_points.pkl
 *.h5df
 *.sh
 data/didemo/train_data.json
+data/tvr/train_data.json
+data/youcook2/youcook2_csv2npy.ipynb
 
 # IPython
 profile_default/

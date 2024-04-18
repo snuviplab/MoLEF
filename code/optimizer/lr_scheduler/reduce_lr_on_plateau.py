@@ -16,13 +16,13 @@ class ReduceLROnPlateau(FairseqLRScheduler):
 
     def __init__(self, args, optimizer):
         super().__init__(args, optimizer)
-        if len(args.lr) > 1:
-            raise ValueError(
-                'Cannot use a fixed learning rate schedule with reduce_lr_on_plateau.'
-                ' Consider --lr-scheduler=fixed instead.'
-            )
+        # if len(args.lr) > 1:
+        #     raise ValueError(
+        #         'Cannot use a fixed learning rate schedule with reduce_lr_on_plateau.'
+        #         ' Consider --lr-scheduler=fixed instead.'
+        #     )
         self.lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-            self.optimizer.optimizer, patience=0, factor=args.lr_shrink)
+            self.optimizer.optimizer, patience=args.patience, factor=args.lr_shrink)
 
     def state_dict(self):
         """Return the LR scheduler state dict."""

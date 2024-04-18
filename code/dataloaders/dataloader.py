@@ -13,13 +13,13 @@ import importlib
 
 # activitynet, tacos, charades, didemo, Tvr
 
-def get_dataset(dataset, model_name, feature_path, data_path, word2vec, max_num_frames, max_num_words, max_num_nodes,
+def get_dataset(dataset, model_name, feature_path, data_path, word2vec, max_num_frames, max_num_words, max_num_nodes, vocab_size,
                 is_training=True, is_adj=True, with_max_IoU=False):
 
     get_class  = getattr(getattr(importlib.import_module("datasets"), dataset), dataset)
 
     if dataset in ['Activitynet', 'Tacos', 'Charades', 'Didemo', 'Tvr', 'Youcook2', 'Msrvtt']:
-        return get_class(model_name, feature_path, data_path, word2vec, max_num_frames, max_num_words, max_num_nodes, is_training, is_adj, with_max_IoU)
+        return get_class(model_name, feature_path, data_path, word2vec, max_num_frames, max_num_words, max_num_nodes, is_training, is_adj, vocab_size, with_max_IoU)
     else : 
         return None
 

@@ -33,17 +33,14 @@ if __name__ == "__main__":
         long_description = fh.read()
 
     setuptools.setup(
-        name="tsgv",
-        version="0.0.1",
-        author="Jinyeong Chae",
+        name="MoLEF",
+        version="1.0.0",
+        author="MoLEF",
         author_email="author@example.com",
-        description="video_text_localization",
+        description="Moment localization evaluation framework",
         long_description=long_description,
         long_description_content_type="text/markdown",
-        # url="https://github.com/pypa/sampleproject",
-        # project_urls={
-        #     "Bug Tracker": "https://github.com/pypa/sampleproject/issues",
-        # },
+
         classifiers=[
             "Programming Language :: Python :: 3",
             "Operating System :: OS Independent",
@@ -51,7 +48,5 @@ if __name__ == "__main__":
         package_dir={"": "code"},
         packages=setuptools.find_packages(where='code'),
         py_modules=[splitext(basename(path))[0] for path in glob('code/*.py')], 
-        # package_data={"tsgv": fetch_package_data()},
-        # packages=setuptools.find_packages(),
-        python_requires=">=3.6",
+        python_requires=">=3.8",
     )

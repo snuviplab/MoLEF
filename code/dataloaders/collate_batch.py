@@ -1,5 +1,6 @@
 import torch
 import numpy as np
+from modules.tmlga.utils import rnns
 
 class BatchCollator(object):
 
@@ -24,7 +25,18 @@ class BatchCollator(object):
         sub_feats = transposed_batch[22]
         sub_mask = transposed_batch[23]
         tef_feats = transposed_batch[24]
+        words_id = transposed_batch[25]
+        
+        words_length = transposed_batch[35]
+        weights = transposed_batch[36]
+        words_feat = transposed_batch[37]
+        vid_feats_length = transposed_batch[38]
 
+        localization = transposed_batch[19]
+        localiz, localiz_lengths = rnns.pad_sequence(localization)
+        start_idx = transposed_batch[39]
+        end_idx = transposed_batch[40]
+        h_labels = transposed_batch[41]
         # origin batch
         # below items with variable length for tmlga model 
 
@@ -35,10 +47,17 @@ class BatchCollator(object):
         # localization = transposed_batch[19]
         # raw_vid_feats_length = transposed_batch[20]
         # factors = transposed_batch[21]
-
+        # print(localization)
+        # print(len(localization))
+        # print(len(start_idx))
+        # print(start_idx)
+        # print(len(end_idx))
 
         return index, torch.tensor(np.array(vid_feats)), torch.tensor(np.array(video_mask)), torch.tensor(np.array(words_vec)), \
                 torch.tensor(np.array(word_mask)), torch.tensor(np.array(fr_label)), torch.tensor(np.array(scores)), \
                 torch.tensor(np.array(scores_mask)), torch.tensor(np.array(id2pos)), torch.tensor(np.array(node_mask)), \
                 torch.tensor(np.array(adj_mat)), torch.tensor(np.array(map_gt)), torch.tensor(np.array(duration)), torch.tensor(np.array(gt)), sample_index, \
-                torch.tensor(np.array(sub_feats)), torch.tensor(np.array(sub_mask)), torch.tensor(np.array(tef_feats))
+                torch.tensor(np.array(sub_feats)), torch.tensor(np.array(sub_mask)), torch.tensor(np.array(tef_feats)), torch.tensor(np.array(words_id).squeeze(-1)), \
+                torch.tensor(np.array(vid_feats_length)), torch.tensor(np.array(words_length)), \
+                torch.tensor(np.array(weights).squeeze(-1)), torch.tensor(np.array(words_feat), dtype=torch.float32), \
+                localiz, torch.tensor(np.array(start_idx)), torch.tensor(np.array(end_idx)), torch.tensor(np.array(h_labels))

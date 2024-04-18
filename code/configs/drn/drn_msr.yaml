@@ -11,13 +11,15 @@ frame_dim : 4096 # 500 for act, 1024 for char, 4096 for did/msr/tac, 3072 for tv
 num_gcn_layers : 2
 num_attn_layers : 2
 is_adj : False
+with_max_IoU : False
+vocab_size : 11901
 
 # ======================================= Traning configs ==================================
-is_first_stage : false 
+is_first_stage : True 
 is_second_stage : false
 is_third_stage : false
 
-model_load_path : '/home/donghwa/data/projects/VT_localization/donghwa/TSGV/results/drn/Msrvtt/first_stage_1e6/model-5' 
+model_load_path : '' 
 
 # ======================================= Evaluate configs ==================================
 iou : [0.1, 0.3, 0.5, 0.7]

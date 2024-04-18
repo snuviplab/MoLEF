@@ -1,3 +1,5 @@
+# from https://github.com/ikuinen/CMIN_moment_retrieval
+
 import math
 import torch
 import torch.nn as nn
@@ -167,14 +169,20 @@ class Model(nn.Module):
         proposals = torch.from_numpy(self.proposals).type_as(fr_label).float()  # [max_num_frames, num_anchors, 2]
         proposals = proposals.view(-1, 2)
         if not self.training:
-            batch_now = reg.shape[0]
-            proposals = proposals.expand(batch_now, self.args.max_num_frames * self.num_anchors, 2)#1400,800
-            predict_box = proposals
-            predict_reg = reg # [nb, 2]
-            refine_box = predict_box + predict_reg
-            fr_label = fr_label.expand(self.args.max_num_frames * self.num_anchors, batch_now, 2).transpose(0, 1).contiguous()
-            reg_loss = self.criterion2(refine_box, fr_label.float())
+            # batch_now = reg.shape[0]
+            # proposals = proposals.expand(batch_now, self.args.max_num_frames * self.num_anchors, 2)#1400,800
+            # predict_box = proposals
+            # predict_reg = reg # [nb, 2]
+            # refine_box = predict_box + predict_reg
+            # fr_label = fr_label.expand(self.args.max_num_frames * self.num_anchors, batch_now, 2).transpose(0, 1).contiguous()
+            # reg_loss = self.criterion2(refine_box, fr_label.float())
             
+            indices = torch.argmax(predict_flatten, -1)
+            predict_box = proposals[indices]  # [nb, 2]
+            predict_reg = reg[range(reg.size(0)), indices]  # [nb, 2]
+            refine_box = predict_box + predict_reg
+            reg_loss = self.criterion2(refine_box, fr_label.float())
+
         else:
             indices = torch.argmax(label, -1)
             predict_box = proposals[indices]  # [nb, 2]

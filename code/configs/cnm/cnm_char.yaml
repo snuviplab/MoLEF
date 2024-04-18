@@ -1,0 +1,54 @@
+# activity, tacos, charades, didemo
+max_num_words : 20
+max_num_nodes : 20
+max_num_frames : 64 # 64 for charades else 200
+d_model : 512
+num_heads : 4
+batch_size : 64 
+dropout : 0.2
+word_dim : 300 # 768 for tvr else 300
+frame_dim : 1024 # 500 for act, 1024 for char, 4096 for did/msr/tac, 3072 for tvr, 512 for you 
+is_adj : False
+with_max_IoU : False
+vocab_size : 1111 
+iou : [0.1, 0.3, 0.5, 0.7]
+early_stop_patience: 100
+target_stride: 1
+
+train: 
+  generator: 
+    lr: 4e-4
+    weight_decay: 0
+    warmup_updates: 400
+    warmup_init_lr: 1e-7
+  
+  reconstructor: 
+    lr: 4e-4
+    weight_decay: 0
+    warmup_updates: 400
+    warmup_init_lr: 1e-7
+  
+  batch_size: 128
+  max_num_epochs: 50
+  model_saved_path: checkpoints/charades/
+
+cnm: 
+  name: CNM
+  config: 
+    hidden_size: 256
+    use_negative: true
+    alpha: 5.5
+    max_width: 0.45
+    dropout: 0.1
+    DualTransformer: 
+      d_model: 256
+      num_heads: 4
+      num_decoder_layers1: 3
+      num_decoder_layers2: 3
+      dropout: 0.1
+
+loss: 
+  beta_1: 0.1
+  beta_2: 0.15
+
+

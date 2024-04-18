@@ -1,0 +1,16 @@
+# activity, tacos
+max_num_words : 20
+max_num_nodes : 20
+max_num_frames : 200 # 200 for charades, 64
+d_model : 512
+num_heads : 4
+batch_size : 64
+dropout : 0.2
+word_dim : 300
+frame_dim : 500
+num_gcn_layers : 2 
+num_attn_layers : 2
+iou : [0.1, 0.3, 0.5, 0.7]
+is_adj : False
+with_max_IoU : 0.3
+vocab_size : 1352 # act: 8000, char: 1111, did: 6250, msr: 11901, tac: 1352, tvr: 9592, you: 1493

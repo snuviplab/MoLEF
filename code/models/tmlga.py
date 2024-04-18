@@ -1,3 +1,5 @@
+# from https://github.com/crodriguezo/TMLGA
+
 import torch
 import numpy as np
 from torch import nn
@@ -112,4 +114,14 @@ class Model(nn.Module):
         else:
             total_loss = start_loss + end_loss
 
-        return total_loss, individual_loss, pred_start, pred_end, attention, atten_loss
+        loss_dict = {}
+        loss_dict['total_loss'] = total_loss
+        loss_dict['individual_loss'] = individual_loss
+        loss_dict['atten_loss'] = atten_loss
+        outputs = {}
+        outputs['pred_start'] = pred_start
+        outputs['pred_end'] = pred_end
+        outputs['attention'] = attention
+
+        return outputs, total_loss, loss_dict
+        # return total_loss, individual_loss, pred_start, pred_end, attention, atten_loss

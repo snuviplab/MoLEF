@@ -1,0 +1,48 @@
+# activity, tacos, charades, didemo
+max_num_words : 20
+max_num_nodes : 20
+max_num_frames : 64 # 64 for charades else 200
+d_model : 256
+num_heads : 4
+batch_size : 32
+dropout : 0.1
+word_dim : 300 # 768 for tvr else 300
+frame_dim : 1024 # 500 for act, 1024 for char, 4096 for did/msr/tac, 3072 for tvr, 512 for you 
+is_adj : False
+with_max_IoU : False
+vocab_size: 1111
+iou : [0.1, 0.3, 0.5, 0.7]
+early_stop_patience: 100
+strategy: loss
+
+train: 
+  batch_size: 32
+  max_num_epochs: 30
+  model_saved_path: ../checkpoints/Charades/
+
+cpl: 
+  name: CPL
+  config: 
+    frames_input_size: 1024
+    words_input_size: 300
+    hidden_size: 256
+    use_negative: true
+    num_props: 8
+    sigma: 9
+    gamma: 0.5
+    dropout: 0.1
+    DualTransformer: 
+      d_model: 256
+      num_heads: 4
+      num_decoder_layers1: 3
+      num_decoder_layers2: 3
+      dropout: 0.1
+  
+loss: 
+  margin_1: 0.1
+  margin_2: 0.15
+  lambda: 0.13
+  alpha_1: 1
+  alpha_2: 5
+
+

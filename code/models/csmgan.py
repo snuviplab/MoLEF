@@ -1,5 +1,6 @@
-import math
+# from https://github.com/liudaizong/CSMGAN
 
+import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

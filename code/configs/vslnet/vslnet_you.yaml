@@ -1,0 +1,46 @@
+# activity, tacos, charades, didemo
+max_num_words : 20
+max_num_nodes : 20
+max_num_frames : 128 # 64 for charades else 200
+d_model : 512
+num_heads : 4
+batch_size : 64
+dropout : 0.2
+word_dim : 300 # 768 for tvr else 300
+frame_dim : 512 # 500 for act, 1024 for char, 4096 for did/msr/tac, 3072 for tvr, 512 for you 
+is_adj : False
+with_max_IoU : False
+vocab_size: 8000
+iou : [0.1, 0.3, 0.5, 0.7]
+early_stop_patience: 100
+target_stride: 1
+
+save_dir: datasets_t7
+task: youcook
+fv: org
+max_pos_len: 128
+# model parameters
+word_size: None 
+char_size: None 
+word_dim: 300 
+video_feature_dim: 512
+char_dim: 50 
+dim: 128
+highlight_lambda: 5.0 
+num_heads: 8
+drop_rate: 0.2
+predictor: rnn # rnn or transform 
+# training/evaluation parameters
+gpu_idx: 0
+seed: 12345
+mode: train # train or test
+epochs: 100
+num_train_steps: None
+init_lr: 0.0001
+clip_norm: 1.0
+warmup_proportion: 0.0
+extend: 0.1
+period: 100
+model_dir: ckpt_t7
+model_name: vslnet
+suffix: None

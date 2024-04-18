@@ -1,0 +1,86 @@
+# activity, tacos, charades, didemo
+max_num_words : 20
+max_num_nodes : 20
+max_num_frames : 200 # 64 for charades else 200
+word_dim : 300 # 768 for tvr else 300
+frame_dim : 512 # 500 for act, 1024 for char, 4096 for did/msr/tac, 3072 for tvr, 512 for you 
+is_adj : False
+iou : [0.1, 0.3, 0.5, 0.7]
+# model_load_path : None
+display_n_batches : 100
+model_saved_path : './save'
+with_max_IoU : False
+vocab_size : 1493
+
+#=============== Model config =====================
+# meta config
+root : '/ROOT_DIR'
+results_dir : '../results/msdetr/youcook2'
+device : '0'
+seed : 1
+log_interval : 1
+val_interval : 5
+save_interval : 50
+use_gpu : True
+debug : False
+eval_untrained : False
+log_dir : 'logs'
+att_visualize : False
+corr_visualize : False
+dist_visualize : False
+
+# training config
+start_epoch : None
+end_epoch : 100
+early_stop_patience : 25
+lr : 0.0003
+lr_drop_step : 20
+wd : 0.0001
+optimizer : 'adamw'
+scheduler : 'reduce_lr_on_plateau'
+sched_mode : 'min'
+factor : 0.8
+patience : 20
+num_workers : 8
+clip_grad : 10.0
+batch_size : 32
+
+# data config
+dataset : 'YouCook2'
+num_input_frames : 200
+num_input_sentences : 1
+eval_bs : 1
+pin_memory : True  # If pin_memory=True, the data loader will copy Tensors into CUDA pinned memory before returning them.
+checkpoint : '../results/msdetr/youcook2'
+max_len_video : 200 # max length of video
+post_process : 'post_process_mst_detr'
+target_stride : 4 # target stride for training
+word_mask_rate : 0.15 # word mask rate for masked word model
+
+
+# model config
+d_model : 512
+ff_dim : 512
+nhead : 16
+num_query : 300
+num_clips : 50 # max_len_video // target_stride
+num_layers_enc : 5
+num_layers_dec : 3
+sr_ratio_lvls : [4, 2, 1, 1, 1]
+use_patch_merge : [True, True, False, False, False]
+dropout : 0.1
+iou_cutoff : 0.7
+w_span_loss : 5.0
+w_iou_loss : 5.0
+w_l1_loss : 1.0
+w_bd_loss : [0.1, 0.5, 1]
+w_mask_loss : 0.5
+topk : 1
+topk_list : []
+num_group : 3
+
+# eval config
+ms : [1, 5]
+ns : [0.3, 0.5, 0.7]
+best_monitor : 'R1@IoU=0.7'
+is_best : 'max'

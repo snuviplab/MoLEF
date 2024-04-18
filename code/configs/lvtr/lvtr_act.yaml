@@ -1,0 +1,106 @@
+# activity, tacos, charades, didemo
+max_num_words : 20
+max_num_nodes : 20
+max_num_frames : 200 # 64 for charades else 200
+word_dim : 300 # 768 for tvr else 300
+frame_dim : 500 # 500 for act, 1024 for char, 4096 for did/msr/tac, 3072 for tvr, 512 for you 
+is_adj : False
+iou : [0.1, 0.3, 0.5, 0.7]
+# model_load_path : None
+display_n_batches : 100
+model_saved_path : './save'
+with_max_IoU : False
+vocab_size : 8000
+
+#=============== Model config =====================
+# meta config
+root : '/ROOT_DIR'
+results_dir : '../results/lvtr/Activitynet'
+device : '0'
+seed : 1
+log_interval : 1
+val_interval : 5
+save_interval : 50
+use_gpu : True
+debug : False
+eval_untrained : False
+log_dir : 'logs'
+att_visualize : False
+corr_visualize : False
+dist_visualize : False
+
+# training config
+start_epoch : None
+end_epoch : 200
+early_stop_patience : 25
+lr : 0.0001
+lr_drop_step : 20
+wd : 0.0001
+optimizer : 'adamw'
+scheduler : 'steplr'
+
+# data config
+dataset : 'Activitynet'
+data_type : 'raw'
+num_input_frames : 256
+num_input_sentences : 1
+batch_size : 32 # batch size
+eval_bs : 1
+num_workers : 8
+pin_memory : True  # If pin_memory=True, the data loader will copy Tensors into CUDA pinned memory before returning them.
+checkpoint : '../results/lvtr/Activitynet'
+norm_vfeat : True # normalization performed on input video features
+norm_tfeat : True # normalization performed on input text features
+txt_drop_ratio : 0 # drop txt_drop_ratio tokens from text input. 0.1=10%
+
+
+# model config
+backbone : 'clip'
+method : 'joint' # choices=['stepwise', 'joint'] choice of transformer design
+hidden_dim : 256 # hidden dimension of Transformer
+nheads : 8 # number of Transformer attention heads
+enc_layers : 4 # Number of encoding layers in the transformer
+dec_layers : 4 # Number of decoding layers in the transformer
+vid_feat_dim : 512 # video feature dim
+txt_feat_dim : 512 # text/query feature dim
+num_proposals : 10 # Number of learnable proposals
+input_dropout : 0.5 # Dropout applied in input
+use_vid_pos : True # position_embedding for video
+use_txt_pos : True # position_embedding for text
+n_input_proj : 2 # layers to encoder input
+dropout : 0.1 # Dropout applied in the transformer
+dim_feedforward : 1024 # Intermediate size of the feedforward layers in the transformer blocks
+pre_norm : False # apply normalize before attention
+vid_position_embedding : 'sine' # ['trainable', 'sine', 'learned'] Type of positional embedding to use on top of the image features
+txt_position_embedding : 'sine' # ['trainable', 'sine', 'learned'] Type of positional embedding to use on top of the text features
+
+
+# loss config
+set_cost_span : 1 # L1 span coefficient in the matching cost
+set_cost_giou : 3 # giou span coefficient in the matching cost
+set_cost_query : 2 # Set guidance coefficient in the matching cost
+aux_loss : True # auxiliary decoding losses (loss at each layer)
+eos_coef : 0.1 # Relative classification weight of the no-object class
+pred_label : 'cos' # ['att', 'sim', 'cos', 'pred'],
+                   # Criteria of label assignment for each query
+                   #     att: use attention weight to predict label
+                   #      sim: use similarity to predict label
+                   #      cos: use cosine similarity to predict label
+                   #      pred: predict label with class head
+
+# evaluation config
+matcher : 'hungarian' #choices=['hungarian', 'bipartite', 'no_match']
+#                     type of matcher to use for evaluation
+#                          hungarian: select min(src, tgt) that minimize overall cost
+#                          bipartite: select max(src, tgt) that minimize overall cost
+#                          no_match: do not assign src to tgt
+span_type : 'cw' # choices=['cw', 'xx'] Type of span (cw: center-width / xx: start-end)
+no_sort_results : False # do not sort results, use this for span visualization
+max_before_nms : 10
+max_after_nms : 10
+conf_thd : 0.0 # only keep windows with conf >= conf_thd
+nms_thd : 0.5 #additionally use non-maximum suppression "
+                            # or non-minimum suppression for distance
+                            # to post-processing the predictions. 
+                            # -1: do not use nms. [0, 1]
+

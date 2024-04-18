@@ -25,7 +25,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/jiny419/MoLEF">
+  <a href="https://github.com/snuviplab/MoLEF">
     <img src="imgs/logo.png" alt="Logo" width="110" height="110">
   </a>
 
@@ -34,14 +34,14 @@
   <p align="center">
     Moment Localization Evaluation Framework
     <br />
-    <a href="https://github.com/jiny419/MoLEF"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/snuviplab/MoLEF"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/jiny419/MoLEF">View Demo</a>
+    <a href="https://github.com/snuviplab/MoLEF">View Demo</a>
     ·
-    <a href="https://github.com/jiny419/MoLEF/issues">Report Bug</a>
+    <a href="https://github.com/snuviplab/MoLEF/issues">Report Bug</a>
     ·
-    <a href="https://github.com/jiny419/MoLEF/issues">Request Feature</a>
+    <a href="https://github.com/snuviplab/MoLEF/issues">Request Feature</a>
   </p>
 </div>
 
@@ -89,14 +89,10 @@ The below image is illustrated our framework, MoLEF.
 
 ### Built With
 
-* [Python 3.8](https://nextjs.org/)
-* [PyTorch 1.10.0 with CUDA 11.3](https://reactjs.org/)
-* [torch-geometric 2.0.3](https://vuejs.org/)
-* [fairseq 0.10.2](https://angular.io/)
-* [gensim](https://svelte.dev/)
-* [nltkl](https://laravel.com)
-* [fcos](https://getbootstrap.com)
-* [tensorboardX](https://jquery.com)
+* [Python 3.8](https://www.python.org/downloads/release/python-380/)
+* [PyTorch 1.10.0 with CUDA 11.3](https://pytorch.org/get-started/previous-versions/)
+* [torch-geometric 2.0.3](https://pytorch-geometric.readthedocs.io/en/2.0.3/)
+* [fairseq 0.10.2](https://fairseq.readthedocs.io/en/v0.10.2/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -111,10 +107,7 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites - Data
 
 See details in data/README.md.
-* Data
-  ```sh
-  ---
-  ```
+
 
 ### Installation
 
@@ -122,22 +115,35 @@ _Below is an example of how you can install an environment and MoLEF._
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/jiny419/MoLEF.git
+   git clone https://github.com/snuviplab/MoLEF.git
    ```
 2. Install environment 
    ```sh
+   conda create -n molef python=3.8
+   pip install six
+   pip install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
+   pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
+   pip install -r requirements.txt
    python -m pip install -e. 
    ```
 ### Train command
 
 ```sh
-python main.py --model model_name --word2vec-path  data/glove.840B.300d.bin --dataset Tacos --feature-path data/tacos/org  --train-data data/tacos/train_data.json --val-data data/tacos/val_data.json  --test-data data/tacos/test_data.json --max-num-epochs 20  --warmup-updates 300 --warmup-init-lr 1e-06 --lr 8e-4 --weight-decay 1e-7 --model-saved-path results/ --cfg code/configs/model_name.yml 
+python code/main.py --model model_name --mode train --word2vec-path data/glove.840B.300d.bin --dataset Tacos \
+              --feature-path data/tacos/org  --train-data data/tacos/train_data.json \
+              --val-data data/tacos/val_data.json  --test-data data/tacos/test_data.json \
+              --max-num-epochs 20  --warmup-updates 300 --warmup-init-lr 1e-06 --lr 8e-4 \
+              --weight-decay 1e-7 --model-saved-path results/ --cfg code/configs/model_name.yml 
 ```
 
 ### Evaluation command 
 
 ```sh
-python main.py  --model model_name --mode evaluation --word2vec-path  data/glove.840B.300d.bin --dataset Tacos --feature-path  data/tacos/org  --train-data data/tacos/train_data.json --val-data  data/tacos/val_data.json  --test-data  data/tacos/test_data.json --max-num-epochs 20  --warmup-updates 300 --warmup-init-lr 1e-06 --lr 8e-4 --weight-decay 1e-7 --model-saved-path results/ --cfg code/configs/model_name.yml 
+python code/main.py --model model_name --mode evaluation --word2vec-path  data/glove.840B.300d.bin \
+                --dataset Tacos --feature-path  data/tacos/org  --train-data data/tacos/train_data.json \
+                --val-data  data/tacos/val_data.json  --test-data  data/tacos/test_data.json --max-num-epochs 20 \
+                --warmup-updates 300 --warmup-init-lr 1e-06 --lr 8e-4 --weight-decay 1e-7 --model-saved-path results/ \
+                --cfg code/configs/model_name.yml 
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -148,7 +154,7 @@ python main.py  --model model_name --mode evaluation --word2vec-path  data/glove
 
 Jinyeong Chae - jiny491@gmail.com
 
-Project Link: [https://github.com/jiny419/MoLEF](https://github.com/jiny419/MoLEF)
+Project Link: [https://github.com/snuviplab/MoLEF](https://github.com/snuviplab/MoLEF)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -165,13 +171,13 @@ This project is licenced under the MIT Licence - see the [LICENSE.md](LICENSE.md
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/jiny419/MoLEF.svg?style=for-the-badge
-[contributors-url]: https://github.com/jiny419/MoLEF/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/jiny419/MoLEF.svg?style=for-the-badge
-[forks-url]: https://github.com/jiny419/MoLEF/network/members
-[stars-shield]: https://img.shields.io/github/stars/jiny419/MoLEF.svg?style=for-the-badge
-[stars-url]: https://github.com/jiny419/MoLEF/stargazers
-[issues-shield]: https://img.shields.io/github/issues/jiny419/MoLEF.svg?style=for-the-badge
-[issues-url]: https://github.com/jiny419/MoLEF/issues
-[license-shield]: https://img.shields.io/github/license/jiny419/MoLEF.svg?style=for-the-badge
-[license-url]: https://github.com/jiny419/MoLEF/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/snuviplab/MoLEF.svg?style=for-the-badge
+[contributors-url]: https://github.com/snuviplab/MoLEF/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/snuviplab/MoLEF.svg?style=for-the-badge
+[forks-url]: https://github.com/snuviplab/MoLEF/network/members
+[stars-shield]: https://img.shields.io/github/stars/snuviplab/MoLEF.svg?style=for-the-badge
+[stars-url]: https://github.com/snuviplab/MoLEF/stargazers
+[issues-shield]: https://img.shields.io/github/issues/snuviplab/MoLEF.svg?style=for-the-badge
+[issues-url]: https://github.com/snuviplab/MoLEF/issues
+[license-shield]: https://img.shields.io/github/license/snuviplab/MoLEF.svg?style=for-the-badge
+[license-url]: https://github.com/snuviplab/MoLEF/blob/master/LICENSE.txt
